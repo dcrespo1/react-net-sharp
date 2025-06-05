@@ -1,0 +1,15 @@
+meta {
+  name: GetActivitiesDetail
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{base_url}}/api/activities/{{id}}
+  body: none
+  auth: inherit
+}
+
+vars:pre-request {
+  id: 46241a6c-4030-4183-aeaf-51186b082609
+}
