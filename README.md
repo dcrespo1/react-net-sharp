@@ -9,11 +9,28 @@ Reactivities is a web application built with C# and ASP.NET Core. The project se
 - Basic CRUD operations for activities
 - RESTful API endpoints
 
-## Getting Started
+## DB Migration Steps
 
-1. Clone the repository.
-2. Restore dependencies and build the project.
-3. Run the backend API.
+> [!NOTE]
+> Make sure that the db container is running
+
+1. Create a Migration
+
+```bash
+dotnet ef migrations add MIGRATION_NAME --project Persistence --startup-project API
+```
+
+2. Apply the migration
+
+```bash
+dotnet ef database update --project Persistence --startup-project API
+```
+
+3. Run the application
+
+```bash
+dotnet run --project API
+```
 
 ## Status
 
