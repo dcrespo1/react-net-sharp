@@ -1,16 +1,12 @@
 {
-  // Use IntelliSense to learn about possible attributes.
-  // Hover to view descriptions of existing attributes.
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch API with Docker Compose",
+      "name": "Launch API with dotnet watch",
       "type": "coreclr",
       "request": "launch",
-      "preLaunchTask": "docker-compose up",
-      "program": "${workspaceFolder}/API/bin/Debug/net9.0/API.dll",
-      "args": [],
+      "program": "dotnet",
+      "args": ["watch"],
       "cwd": "${workspaceFolder}/API",
       "stopAtEntry": false,
       "serverReadyAction": {
