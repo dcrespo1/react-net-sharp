@@ -12,6 +12,8 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+builder.Services.AddCors();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -19,6 +21,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors(x =>
+    x.AllowAnyHeader()
+     .AllowAnyMethod()
+     .WithOrigins("http://localhost:3000", "https://localhost:3000"));
 
 app.MapControllers();
 
