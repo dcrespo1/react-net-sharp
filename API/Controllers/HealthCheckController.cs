@@ -1,20 +1,18 @@
+using System.Text.Json.Nodes;
+using Application.Health.Queries;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
 
 
 namespace API.Controllers;
 
-public class HealthCheckController : BaseApiController
+public class HealthController : BaseApiController
 {
     [HttpGet]
-    public ActionResult<string> GetHealthCheck()
+    public async Task<ActionResult<JsonArray>> GetHealthCheck()
     {
-        return "Healthy";
+        return await Mediator.Send(new GetHealthStatus.Query());
     }
 
-    [HttpGet("ping")]
-    public ActionResult<string> Ping()
-    {
-        return "Pong";
-    }
+   
 }

@@ -1,0 +1,26 @@
+meta {
+  name: EditActivity
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{base_url}}/api/activities
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "id": "064cd8e0-5bdd-4cc5-9515-fc7d1883f94f",
+      "title": "CHANGED ACTIVITY AGAIN",
+      "date": "2026-01-05T20:36:09.52667Z",
+      "description": "BLA BLA BLA",
+      "category": "BING",
+      "isCancelled": true,
+      "city": "BONG",
+      "venue": "BLA BLA BLAHHH",
+      "latitude": 51.5575525,
+      "longitude": -0.781404
+    }
+}
