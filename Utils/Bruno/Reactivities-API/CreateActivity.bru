@@ -1,0 +1,42 @@
+meta {
+  name: CreateActivity
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{base_url}}/api/activities
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "title": "{{$randomWords}}",
+    "date": "2026-01-05T20:36:09.52667Z",
+    "description": "{{$randomWords}}",
+    "category": "{{$randomWords}}",
+    "isCancelled": {{$randomBoolean}},
+    "city": "{{$randomCity}}",
+    "venue": "{{$randomStreetName}}",
+    "latitude": {{$randomLatitude}},
+    "longitude": {{$randomLongitude}}
+  }
+}
+
+assert {
+  res.status: eq 200
+  res.body: isString
+}
+
+tests {
+  test("returns the right kind of data", function(){
+    const data = res.getBody();
+    expect(data).to.be.a('string');
+  });
+  
+  test("returns the right status code", function(){
+    const resp_code = res.getStatus();
+    expect(resp_code).to.equal(200);
+  });
+}
